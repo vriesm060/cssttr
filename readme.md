@@ -1,5 +1,7 @@
 # CSS to the Rescue | Max de Vries
 
+[Website](https://vriesm060.github.io/cssttr/website/)
+
 Voor dit vak heb ik de componenten vormgegeven in een website. Ik was de eerste week van dit vak ziek, waardoor ik deze opdracht in een kleine 2 weken heb moeten doen. Hierdoor heb ik er niet alles uitgehaald wat ik had willen doen.
 
 Ondanks dit heb ik de belangrijkste elementen er wel in zitten. Alle componenten zijn gestyled en responsive en de interactie is mogelijk met een toetsenbord.
