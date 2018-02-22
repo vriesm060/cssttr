@@ -10,11 +10,26 @@
 </head>
 <body>
 
+	<a href="#content" aria-label="Skip to content">Skip to content</a>
+
 	<header role="banner">
 		<h1>Living Styleguide</h1>
+		<a role="button" href="#open-menu" id="close-menu" aria-label="Open the menu">
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500">
+				<rect y="237.5" width="500" height="25"/>
+				<rect y="63" width="500" height="25"/>
+				<rect y="413" width="500" height="25"/>
+			</svg>
+		</a>
+		<a role="button" href="#close-menu" id="open-menu" aria-label="Close the menu">
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500">
+				<rect x="237.5" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -103.5534 250)" width="25" height="500"/>
+				<rect x="0" y="237.5" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -103.5534 250)" width="500" height="25"/>
+			</svg>
+		</a>
 		<nav role="menu">
 			<ul>
-				<li><a href="index.html" aria-label="Home">Home</a></li>
+				<li><a href="home.html" aria-label="Home">Home</a></li>
 				<li>
 					<a href="products.html" aria-label="Products">Products</a>
 					<ul>
@@ -31,51 +46,42 @@
 		</nav>
 	</header>
 
-	<div class="wrapper">
-		<main>
-			contact page
-		</main>
-		<nav role="status">
-			status
-		</nav>
-	</div>
+		<section id="content">
+			<ol>
+				<li>
+					<p>
+						Hey!
+					</p>
+					<footer>
+						<p>Posted on <time datatime="2015-01-22T10:25">10:25 AM</time> by you</p>
+						<p data-status="READ">Has been read</p>
+					</footer>
+				</li>
+				<li>
+					<p>
+						Hey! Sorry I was busy
+					</p>
+					<footer>
+						<p>Posted on <time datatime="2017-02-03T14:19">2:19 PM</time> by John</p>
+					</footer>
+				</li>
+				<li>
+					<p>
+						I sent that 2 years ago
+					</p>
+					<footer>
+						<p>Posted on <time datatime="2017-02-03T14:22">2:22 PM</time> by you</p>
+						<p data-status="DELIVERED">Has been delivered</p>
+					</footer>
+				</li>
+			</ol>
 
-	<!--
-	<ol>
-		<li>
-			<p>
-				Hey!
-			</p>
-			<footer>
-				<p>Posted on <time datatime="2015-01-22T10:25">10:25 AM</time> by you</p>
-				<p data-status="READ">Has been read</p>
-			</footer>
-		</li>
-		<li>
-			<p>
-				Hey! Sorry I was busy
-			</p>
-			<footer>
-				<p>Posted on <time datatime="2017-02-03T14:19">2:19 PM</time> by John</p>
-			</footer>
-		</li>
-		<li>
-			<p>
-				I sent that 2 years ago
-			</p>
-			<footer>
-				<p>Posted on <time datatime="2017-02-03T14:22">2:22 PM</time> by you</p>
-				<p data-status="DELIVERED">Has been delivered</p>
-			</footer>
-		</li>
-	</ol>
-
-	<form action="/" method="post">
-		<label for="field-message">Message</label>
-		<textarea name="field-message" id="field-message"></textarea>
-		<button type="submit">Send</button>
-	</form>
-	-->
+			<form action="/" method="post">
+				<label for="field-message">Message</label>
+				<textarea name="field-message" id="field-message" placeholder="Your message"></textarea>
+				<button type="submit">Send</button>
+			</form>
+		</section>
 
 </body>
 </html>
