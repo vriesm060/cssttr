@@ -11,19 +11,19 @@ Ik heb minder aandacht besteed aan de visuele vorm van de componenten en de inte
 ## Componenten
 
 ### Login:
-![](login.png)
+![](screenshots/login.png)
 
 ### Navigation & Media item:
-![](home.png)
+![](screenshots/home.png)
 
 ### Picture with subtitle & rating:
-![](lightbox.png)
+![](screenshots/lightbox.png)
 
 ### Step indicator:
-![](products.png)
+![](screenshots/products.png)
 
 ### Chat:
-![](contact.png)
+![](screenshots/contact.png)
 
 ## Logboek
 
@@ -39,7 +39,7 @@ Niks gedaan i.v.m. ziekte
 
 *Donderdag 15 februari:*
 
-* Verder gewerkt aan de opzet van de website. 
+* Verder gewerkt aan de opzet van de website.
 * Gekeken naar kleur en typografie.
 * Submenu uitklapbaar gemaakt en ook werkend gekregen via de [TAB].
 * Eerste styling gemaakt voor de artikelen.
