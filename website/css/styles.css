@@ -1,7 +1,7 @@
 
 	:root {
 		--primary-color: #EDA16A;
-		--secondary-color: #62BF94; 
+		--secondary-color: #62BF94;
 		--highlight-color: #C83741;
 		--black-color: #031727;
 		--bg-color: #FFFAF1;
@@ -51,6 +51,7 @@
 
 	body {
 		background-color: var(--bg-color);
+
 	}
 
 	h1 {
@@ -424,12 +425,14 @@
 		right: 0;
 		left: 0;
 		display: none;
-		width: calc(100% - (var(--spacing-unit) * 2));
+		/* width: calc(100% - (var(--spacing-unit) * 2)); */
+
+		width: auto;
 		max-width: 30rem;
 		height: auto;
 		margin: var(--spacing-unit) auto;
 		background-color: #fff;
-		box-shadow: 0 0 0 100vmax rgba(0,0,0,0.8);
+		box-shadow: 0 0 0 100vmax rgba(0,0,0,.8);
 	}
 
 	#item-detail > [role='button'] {
@@ -454,8 +457,15 @@
 		padding: var(--spacing-unit);
 	}
 
+	#item-detail figure {
+		display: block;
+		width: min-content;
+		max-width: 30rem;
+		margin: auto;
+	}
+
 	#item-detail img {
-		width: 100%;
+		max-width: inherit;
 		height: auto;
 	}
 
@@ -474,6 +484,16 @@
 	#item-detail figcaption > footer a {
 		color: var(--black-color);
 		font-weight: 500;
+	}
+
+	/* Show the article detail on click */
+	#item-detail:target {
+		display: block;
+	}
+
+	/* Hide the article detail on click */
+	html:target > #item-detail {
+		display: none;
 	}
 
 /*
@@ -546,16 +566,6 @@
 		width: 75%;
 		height: auto;
 		margin: 0 auto;
-	}
-
-	/* Show the article detail on click */
-	#item-detail:target {
-		display: block;
-	}
-
-	/* Hide the article detail on click */
-	html:target > #item-detail {
-		display: none;
 	}
 
 /*
