@@ -131,9 +131,9 @@ a[role='button'] {
 	justify-content: center;
 	align-items: center;
 	height: 70px;
-	height: 4.375rem;
+	height: 3.125rem;
 	padding: 24px;
-	padding: var(--spacing-unit);
+	padding: 1rem;
 	border: 0;
 	border-radius: 30px;
 	border-radius: 4.375rem;
@@ -145,6 +145,13 @@ a[role='button'] {
 	line-height: 1;
 	cursor: pointer;
 	transition: all .3s ease-in-out;
+}
+@media all and (min-width: 41em) {
+	button,
+	a[role='button'] {
+		height: 4.375rem;
+		padding: var(--spacing-unit);
+	}
 }
 button:focus,
 button:hover,
@@ -290,24 +297,43 @@ a#open-menu {
 	top: 0;
 	display: block;
 	width: 70px;
-	width: 4.375rem;
-	margin: var(--spacing-unit);
+	width: 3.125rem;
+	margin: calc(1 * var(--spacing-unit));
 	border-radius: 50%;
+	background-color: #fff;
+}
+@media all and (min-width: 41em) {
+	a#close-menu,
+	a#open-menu {
+		width: 4.375rem;
+	}
+}
+a#close-menu:focus,
+a#close-menu:hover,
+a#close-menu:active,
+a#open-menu:focus,
+a#open-menu:hover,
+a#open-menu:active {
+	background-color: #000;
 }
 
 a#close-menu > svg,
 a#open-menu > svg {
 	display: block;
 	width: 100%;
-	fill: var(--color-white);
+	fill: #000;
+}
+a#close-menu:focus > svg,
+a#close-menu:hover > svg,
+a#close-menu:active > svg,
+a#open-menu:focus > svg,
+a#open-menu:hover > svg,
+a#open-menu:active > svg {
+	fill: var(--color-primary);
 }
 
 a#open-menu {
 	display: none;
-	background-color: var(--color-white);
-}
-a#open-menu > svg {
-	fill: var(--color-primary);
 }
 
 a#open-menu:target {
@@ -338,6 +364,7 @@ nav[role='menu'] {
 nav[role='menu'] > ul {
 	display: block;
 	width: 100%;
+	max-width: 30rem;
 }
 
 nav[role='menu'] li {
@@ -367,12 +394,17 @@ nav[role='menu'] li:hover > a + ul {
 
 nav[role='menu'] li > a {
 	position: relative;
-	display: block;
-	padding-left: var(--spacing-unit);
+	display: inline-block;
+	padding: 0 var(--spacing-unit);
 	color: var(--color-white);
-	font-size: var(--heading-font-size);
+	font-size: 2em;
 	font-weight: var(--heading-font-weight);
 	line-height: 1;
+}
+@media all and (min-width: 41em) {
+	nav[role='menu'] li > a {
+		font-size: 4em;
+	}
 }
 nav[role='menu'] li > a::before {
 	position: absolute;
@@ -386,6 +418,11 @@ nav[role='menu'] li > a::before {
 	transform: translateX(-50vw);
 	transition: all .3s ease-in-out;
 	content: '';
+}
+@media all and (min-width: 41em) {
+	nav[role='menu'] li > a::before {
+		width: 9px;
+	}
 }
 nav[role='menu'] li > a:focus::before,
 nav[role='menu'] li > a:hover::before,
@@ -549,7 +586,7 @@ main > a[role='button']:active article > h2 {
 
 #item-detail {
 	position: absolute;
-	z-index: 2;
+	z-index: 5;
 	left: 0;
 	right: 0;
 	top: 0;
@@ -566,20 +603,28 @@ main > a[role='button']:active article > h2 {
 	top: 0;
 	right: 0;
 	display: block;
-	width: 4.375rem;
-	height: 4.375rem;
+	width: 3.125rem;
+	height: 3.125rem;
 	border: 0;
 	border-radius: 50%;
 	margin: var(--spacing-unit);
+	background-color: #fff;
 }
-
-#item-detail h2 {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: auto;
-	padding: var(--spacing-unit);
+@media all and (min-width: 41em) {
+	#item-detail > [role='button'] {
+		width: 4.375rem;
+		height: 4.375rem;
+	}
+}
+#item-detail > [role='button']:focus,
+#item-detail > [role='button']:hover,
+#item-detail > [role='button']:active {
+	background-color: #000;
+}
+#item-detail > [role='button']:focus > svg,
+#item-detail > [role='button']:hover > svg,
+#item-detail > [role='button']:active > svg {
+	fill: var(--color-primary);
 }
 
 #item-detail figure {
@@ -590,7 +635,17 @@ main > a[role='button']:active article > h2 {
 	margin: auto;
 }
 
+#item-detail h2 {
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: var(--spacing-unit);
+	color: var(--color-white);
+	background-color: var(--color-primary);
+}
+
 #item-detail img {
+	display: block;
 	max-width: 35rem;
 	height: auto;
 }
