@@ -96,10 +96,6 @@ h2 {
 	line-height: var(--heading-line-height);
 }
 
-p {
-	max-width: 30em;
-}
-
 a {
 	position: relative;
 	padding-bottom: 5px;
@@ -146,6 +142,103 @@ a[role='button'] {
 }
 a[role='button']::after {
 	content: none;
+}
+
+/*
+====================
+		Login
+====================
+*/
+
+div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+}
+
+div > h1 {
+	width: calc(100% - (var(--spacing-unit) * 2));
+	max-width: 30rem;
+	margin: var(--spacing-unit) auto;
+	font-size: 2em;
+}
+
+form {
+	display: grid;
+	grid-template-columns: 1.5rem auto;
+	width: calc(100% - (var(--spacing-unit) * 2));
+	max-width: 30rem;
+	margin: var(--spacing-unit) auto;
+}
+
+form input {
+	grid-column: span 2;
+	height: 3.125rem;
+	padding: calc((3.125rem - 1em) / 2);
+	border: 0;
+	margin: 1rem 0;
+	background-color: #fff;
+	font-size: 1em;
+	font-weight: 300;
+}
+
+/* Custom checkbox: */
+form input[type='checkbox'] {
+	grid-column: span 1;
+	width: 1.5rem;
+	height: 1.5rem;
+	padding: 0;
+	margin: 0;
+	clip: rect(0,0,0,0);
+}
+
+form input[type='checkbox']::before {
+	content: '';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 1rem;
+	height: 1rem;
+	padding: .25rem;
+	background: #ccc;
+}
+
+input[type="checkbox"]:checked::before {
+	content: '\2713';
+	color: #fff;
+	background: var(--color-primary);
+}
+
+form input[type='checkbox'] + label {
+	grid-column: 2/3;
+	margin-left: 1rem;
+}
+
+form > a {
+	grid-column: span 2;
+	justify-self: start;
+	margin: 1rem 0;
+}
+
+form button[type='submit'] {
+	grid-column: span 2;
+	height: 3.125rem;
+	padding: calc((3.125rem - 1.4em) / 2);
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	color: #fff;
+	background-color: var(--color-black);
+	font-size: 1em;
+	font-weight: 300;
+}
+
+form button[type='submit']:hover,
+form button[type='submit']:active,
+form button[type='submit']:focus {
+	background-color: var(--color-primary);
 }
 
 /*
@@ -347,15 +440,20 @@ header[role='banner'] {
 
 main {
 	display: block;
-	/* display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-	justify-items: start;
-	align-items: start;
-	grid-gap: var(--spacing-unit); */
 	width: 100%;
 	padding: var(--spacing-unit);
 	-webkit-column-count: 1;
   -webkit-column-gap: var(--spacing-unit);
+}
+@media all and (min-width: 40em) {
+	main {
+		-webkit-column-count: 2;
+	}
+}
+@media all and (min-width: 60em) {
+	main {
+		-webkit-column-count: 3;
+	}
 }
 
 /*
@@ -417,4 +515,359 @@ main > a[role='button']:hover article > h2,
 main > a[role='button']:active article > h2 {
 	opacity: 1;
 	transform: translateX(0);
+}
+
+/*
+====================
+		Item Detail
+====================
+*/
+
+#item-detail {
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	right: 0;
+	top: 0;
+	display: none;
+	max-width: 35rem;
+	margin: var(--spacing-unit) auto;
+	background-color: #fff;
+	box-shadow: 0 0 0 100vmax rgba(0,0,0,.8);
+}
+
+#item-detail > [role='button'] {
+	z-index: 3;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 4.375rem;
+	height: 4.375rem;
+	border: 0;
+	border-radius: 50%;
+	margin: var(--spacing-unit);
+}
+
+#item-detail h2 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+	padding: var(--spacing-unit);
+}
+
+#item-detail figure {
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	max-width: min-content;
+	margin: auto;
+}
+
+#item-detail img {
+	max-width: 35rem;
+	height: auto;
+}
+
+#item-detail figcaption > p,
+#item-detail figcaption > footer {
+	padding: var(--spacing-unit);
+}
+
+/* Show the article detail on click */
+#item-detail:target {
+	display: block;
+}
+
+/* Hide the article detail on click */
+html:target > #item-detail {
+	display: none;
+}
+
+/*
+====================
+		Rating
+====================
+*/
+
+#item-detail fieldset {
+	position: absolute;
+	right: 0;
+	bottom: calc(-9rem - var(--spacing-unit));
+	left: 0;
+	display: block;
+	width: 100%;
+	max-width: 20rem;
+	height: auto;
+	padding: 0;
+	border: 0;
+	margin: 0 auto;
+	color: #fff;
+	text-align: center;
+}
+@media all and (min-width: 45rem) {
+	#item-detail fieldset {
+		top: 0;
+		bottom: 0;
+		left: calc(100% + 1.5rem);
+		width: 5rem;
+		margin: 0;
+	}
+}
+
+#item-detail fieldset > legend {
+	display: block;
+	width: 100%;
+	margin-bottom: var(--spacing-unit);
+	font-weight: 500;
+}
+
+#item-detail fieldset > input {
+	display: none;
+}
+
+#item-detail fieldset > input + label {
+	position: relative;
+	float: left;
+	width: calc(25% - 1.5rem);
+	max-width: 3.5rem;
+	padding-top: 15%;
+	margin: .75rem;
+	cursor: pointer;
+	font-size: .75em;
+}
+@media all and (min-width: 45rem) {
+	#item-detail fieldset > input + label {
+		clear: both;
+		display: block;
+		width: 3.5rem;
+		padding-top: 3rem;
+	}
+}
+
+#item-detail fieldset > input + label > svg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 75%;
+	height: auto;
+	margin: 0 auto;
+}
+
+/*
+====================
+		Step Indicator
+====================
+*/
+
+nav[role='status'] {
+	display: block;
+	width: 100%;
+	padding: calc(var(--spacing-unit) / 2);
+	background-color: var(--color-primary);
+}
+@media all and (min-width: 45rem) {
+	nav[role='status'] {
+		top: 0;
+	}
+}
+
+nav[role='status'] h1 {
+	margin: calc(var(--spacing-unit) / 2);
+}
+
+nav[role='status'] progress[value] {
+	position: relative;
+	display: block;
+	width: calc(100% - var(--spacing-unit));
+	height: 1.5625rem;
+	margin: var(--spacing-unit) calc(var(--spacing-unit) / 2);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+nav[role='status'] progress[value]::before {
+	z-index: 1;
+	position: absolute;
+	left: 1rem;
+	top: 0;
+	display: block;
+	height: 100%;
+	color: var(--color-white);
+	font-weight: 500;
+	content: '25%';
+}
+
+nav[role='status'] progress[value]::-webkit-progress-bar {
+	border-radius: 3.125rem;
+	background-color: #fff;
+}
+
+nav[role='status'] progress[value]::-webkit-progress-value {
+	position: relative;
+	border-radius: 3.125rem 0 0 3.125rem;
+	background-color: var(--color-black);
+}
+
+nav[role='status'] ol {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 1.5rem;
+}
+
+/* Give h1, progress and ol a max-width: */
+nav[role='status'] h1,
+nav[role='status'] progress[value],
+nav[role='status'] ol {
+	max-width: 35rem;
+}
+
+nav[role='status'] li {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: calc((2.5rem - 1em) / 2);
+	border-radius: 50%;
+	margin: calc(var(--spacing-unit) / 2);
+	background-color: #fff;
+	font-size: .75em;
+	font-weight: 500;
+	line-height: 1;
+	list-style-type: none;
+	counter-increment: ol-item;
+}
+nav[role='status'] li::before {
+	margin-bottom: 150%;
+	content: counter(ol-item);
+	font-size: 1rem;
+}
+
+nav[role='status'] li > a {
+	color: var(--color-white);
+}
+nav[role='status'] li > a::after {
+	background-color: var(--color-white);
+}
+
+/* Completed tasks have a green background: */
+nav[role='status'] li:nth-child(1) {
+	color: var(--color-white);
+	background-color: var(--color-black);
+}
+
+nav[role='status'] li > a:focus {
+	outline: 2px solid var(--color-black);
+}
+
+/*
+====================
+		Chat
+====================
+*/
+
+section {
+	position: relative;
+	left: 0;
+	top: 3.125rem;
+	display: block;
+	width: 100%;
+	max-width: 40rem;
+	margin: 0 auto;
+	margin-top: var(--spacing-unit);
+}
+@media all and (min-width: 45rem) {
+	section {
+		top: 0;
+	}
+}
+
+section ol {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+}
+
+section li {
+	display: block;
+	max-width: 60%;
+	margin: var(--spacing-unit);
+	list-style-type: none;
+}
+
+section li:nth-child(odd) {
+	align-self: flex-end;
+}
+
+section li > p {
+	padding: var(--spacing-unit);
+	background-color: #fff;
+}
+
+section li:nth-child(odd) > p {
+	color: #fff;
+	background-color: var(--color-primary);
+}
+
+section li > footer {
+	margin-top: .5rem;
+	font-size: .75em;
+}
+
+section form {
+	display: block;
+	width: 100%;
+	max-width: none;
+	padding: var(--spacing-unit);
+	background-color: var(--color-primary);
+}
+
+section form label {
+	display: block;
+	font-size: 1.5em;
+	color: #fff;
+}
+
+section form textarea {
+	display: block;
+	width: 100%;
+	height: calc((var(--spacing-unit) * 2) + 1em);
+	padding: var(--spacing-unit);
+	border: 0;
+	margin: var(--spacing-unit) auto;
+	resize: none;
+	background-color: #fff;
+	font-size: 1em;
+	font-weight: 300;
+	line-height: 1;
+}
+
+section form textarea:focus {
+	outline: 2px solid var(--color-black);
+}
+
+section form textarea::placeholder {
+	color: #ccc;
+}
+
+section form button {
+	display: block;
+	width: 100%;
+	height: 3.125rem;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	cursor: pointer;
+	color: #fff;
+	font-size: 1em;
+	font-weight: 300;
+	background-color: var(--color-black);
 }
