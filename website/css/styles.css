@@ -346,82 +346,75 @@ header[role='banner'] {
 */
 
 main {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	display: block;
+	/* display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 	justify-items: start;
 	align-items: start;
-	grid-gap: var(--spacing-unit);
+	grid-gap: var(--spacing-unit); */
 	width: 100%;
-	min-height: 100vh;
 	padding: var(--spacing-unit);
+	-webkit-column-count: 1;
+  -webkit-column-gap: var(--spacing-unit);
 }
+
+/*
+====================
+		Items
+====================
+*/
 
 main > a[role='button'] {
 	display: block;
 	overflow: hidden;
+	width: 100%;
 	height: auto;
 	padding: 0;
 	border-radius: 0;
+	margin-bottom: var(--spacing-unit);
 	background: none;
+	transition: transform .3s ease-in-out;
 }
-main > a::after {
+main > a[role='button']:focus,
+main > a[role='button']:hover,
+main > a[role='button']:active {
+	/* transform: scale(1.05, 1.05); */
+}
+main > a[role='button']::after {
 	content: none;
 }
 
-main > a article {
+main > a[role='button'] article {
 	position: relative;
 	display: block;
-	overflow: hidden;
+	width: 100%;
+	height: auto;
 	background-color: #fff;
 	transition: all .3s ease-in-out;
 }
 
-main > a article > img {
+main > a[role='button'] article > img {
 	display: block;
 	width: 100%;
 	height: auto;
 }
 
-main > a article > h2 {
+main > a[role='button'] article > h2 {
 	position: absolute;
 	left: 0;
 	bottom: var(--spacing-unit);
 	display: block;
-	opacity: 1;
-	width: calc(100% - var(--spacing-unit));
+	opacity: .7;
 	padding: var(--spacing-unit);
 	color: #fff;
 	background-color: rgba(3,23,39,.8);
 	font-size: 1.25em;
+	transform: translateX(-100%);
 	transition: all .3s ease-in-out;
 }
-
-/*
-a {
-	position: relative;
-	padding-bottom: 5px;
-	padding-bottom: .3125rem;
-	outline: 0;
-	color: var(--color-primary);
-	font-weight: 500;
-	text-decoration: none;
+main > a[role='button']:focus article > h2,
+main > a[role='button']:hover article > h2,
+main > a[role='button']:active article > h2 {
+	opacity: 1;
+	transform: translateX(0);
 }
-
-button,
-a[role='button'] {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 70px;
-	height: 4.375rem;
-	padding: 24px;
-	padding: var(--spacing-unit);
-	border-radius: 30px;
-	border-radius: 1.875rem;
-	color: var(--color-white);
-	background-color: var(--color-primary);
-	font-size: var(--base-font-size);
-	font-weight: var(--base-font-weight);
-	line-height: 1;
-}
-*/
