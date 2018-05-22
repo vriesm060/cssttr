@@ -132,13 +132,24 @@ a[role='button'] {
 	height: 4.375rem;
 	padding: 24px;
 	padding: var(--spacing-unit);
+	border: 0;
 	border-radius: 30px;
-	border-radius: 1.875rem;
+	border-radius: 4.375rem;
+	outline: 0;
 	color: var(--color-white);
 	background-color: var(--color-primary);
 	font-size: var(--base-font-size);
 	font-weight: var(--base-font-weight);
 	line-height: 1;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+}
+button:focus,
+button:hover,
+a[role='button']:focus,
+a[role='button']:hover,
+a[role='button']:active {
+	background-color: var(--color-black);
 }
 a[role='button']::after {
 	content: none;
@@ -159,10 +170,9 @@ div {
 }
 
 div > h1 {
-	width: calc(100% - (var(--spacing-unit) * 2));
+	width: calc(100% - (2 * var(--spacing-unit)));
 	max-width: 30rem;
 	margin: var(--spacing-unit) auto;
-	font-size: 2em;
 }
 
 form {
@@ -175,13 +185,18 @@ form {
 
 form input {
 	grid-column: span 2;
-	height: 3.125rem;
+	height: 4.375rem;
 	padding: calc((3.125rem - 1em) / 2);
-	border: 0;
+	border: 5px solid transparent;
+	outline: 0;
 	margin: 1rem 0;
 	background-color: #fff;
 	font-size: 1em;
 	font-weight: 300;
+}
+form input:not([type='checkbox']):focus {
+	border-color: var(--color-primary);
+	transition: border .3s ease-in-out;
 }
 
 /* Custom checkbox: */
@@ -190,6 +205,7 @@ form input[type='checkbox'] {
 	width: 1.5rem;
 	height: 1.5rem;
 	padding: 0;
+	border: 0;
 	margin: 0;
 	clip: rect(0,0,0,0);
 }
@@ -203,9 +219,14 @@ form input[type='checkbox']::before {
 	height: 1rem;
 	padding: .25rem;
 	background: #ccc;
+	transition: all .3s ease-in-out;
+}
+form input[type='checkbox']:focus::before {
+	border-radius: 50%;
 }
 
 input[type="checkbox"]:checked::before {
+	border-radius: 50%;
 	content: '\2713';
 	color: #fff;
 	background: var(--color-primary);
@@ -224,21 +245,6 @@ form > a {
 
 form button[type='submit'] {
 	grid-column: span 2;
-	height: 3.125rem;
-	padding: calc((3.125rem - 1.4em) / 2);
-	border: 0;
-	outline: 0;
-	cursor: pointer;
-	color: #fff;
-	background-color: var(--color-black);
-	font-size: 1em;
-	font-weight: 300;
-}
-
-form button[type='submit']:hover,
-form button[type='submit']:active,
-form button[type='submit']:focus {
-	background-color: var(--color-primary);
 }
 
 /*
