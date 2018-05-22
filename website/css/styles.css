@@ -285,7 +285,7 @@ body > a:first-child:focus-within {
 a#close-menu,
 a#open-menu {
 	position: fixed;
-	z-index: 1;
+	z-index: 3;
 	left: 0;
 	top: 0;
 	display: block;
@@ -303,7 +303,6 @@ a#open-menu > svg {
 }
 
 a#open-menu {
-	z-index: 2;
 	display: none;
 	background-color: var(--color-white);
 }
@@ -326,7 +325,7 @@ a#open-menu:target + nav {
 
 nav[role='menu'] {
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	left: 0;
 	top: 0;
 	display: none;
@@ -856,7 +855,9 @@ section li:nth-child(odd) {
 
 section li > p {
 	padding: var(--spacing-unit);
+	border-radius: 70px;
 	background-color: #fff;
+	text-align: center;
 }
 
 section li:nth-child(odd) > p {
@@ -886,9 +887,10 @@ section form label {
 section form textarea {
 	display: block;
 	width: 100%;
-	height: calc((var(--spacing-unit) * 2) + 1em);
+	height: calc((2 * var(--spacing-unit)) + 1.4em);
 	padding: var(--spacing-unit);
-	border: 0;
+	border: 5px solid transparent;
+	outline: 0;
 	margin: var(--spacing-unit) auto;
 	resize: none;
 	background-color: #fff;
@@ -896,9 +898,9 @@ section form textarea {
 	font-weight: 300;
 	line-height: 1;
 }
-
 section form textarea:focus {
-	outline: 2px solid var(--color-black);
+	border-color: var(--color-black);
+	transition: border .3s ease-in-out;
 }
 
 section form textarea::placeholder {
@@ -917,4 +919,9 @@ section form button {
 	font-size: 1em;
 	font-weight: 300;
 	background-color: var(--color-black);
+}
+section form button:focus,
+section form button:hover {
+	color: var(--color-black);
+	background-color: var(--color-white);
 }
