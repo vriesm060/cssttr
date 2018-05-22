@@ -8,10 +8,10 @@
 		--base-line-height: 1.7;
 
 		/* Title fonts */
-		--title-font-size: 4em;
+		--title-font-size: 3em;
 		--title-font-weight: 300;
 		--title-letter-spacing: .25em;
-		--title-line-height: 1;
+		--title-line-height: 1.4;
 
 		/* Heading fonts */
 		--heading-font-size: 2em;
@@ -28,6 +28,11 @@
 	/* Spacing */
 	--spacing-unit: 24px;
 	--spacing-unit: 1.5rem;
+}
+@media all and (min-width: 30em) {
+	:root {
+		--title-font-size: 4em;
+	}
 }
 
 /*
@@ -76,13 +81,14 @@ h1 {
 	letter-spacing: var(--title-letter-spacing);
 	line-height: var(--title-line-height);
 	text-transform: uppercase;
+	word-break: break-all;
 }
 
-h1 > span {
+/* h1 > span {
 	position: relative;
 	top: .1em;
 	font-size: 1.5em;
-}
+} */
 
 h2 {
 	font-size: var(--heading-font-size);
@@ -271,4 +277,63 @@ nav[role='menu'] li > a:active::before {
 }
 nav[role='menu'] li > a::after {
 	content: none;
+}
+
+/*
+====================
+		Header
+====================
+*/
+
+header[role='banner'] {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 90vh;
+	padding: calc(2 * var(--spacing-unit));
+	color: var(--color-white);
+	background: var(--color-primary);
+	background: linear-gradient(-45deg, var(--color-primary), #5dd79e);
+	background-size: 400% 400%;
+	text-align: center;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
