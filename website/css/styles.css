@@ -781,6 +781,7 @@ nav[role='status'] li {
 	height: 2.5rem;
 	padding: calc((2.5rem - 1em) / 2);
 	border-radius: 50%;
+	outline: 0;
 	margin: calc(var(--spacing-unit) / 2);
 	background-color: #fff;
 	font-size: .75em;
@@ -788,6 +789,11 @@ nav[role='status'] li {
 	line-height: 1;
 	list-style-type: none;
 	counter-increment: ol-item;
+	transform: scale(1,1);
+	transition: transform .3s ease-in-out;
+}
+nav[role='status'] li:focus {
+	transform: scale(1.2,1.2);
 }
 nav[role='status'] li::before {
 	margin-bottom: 150%;
@@ -806,10 +812,6 @@ nav[role='status'] li > a::after {
 nav[role='status'] li:nth-child(1) {
 	color: var(--color-white);
 	background-color: var(--color-black);
-}
-
-nav[role='status'] li > a:focus {
-	outline: 2px solid var(--color-black);
 }
 
 /*
