@@ -126,8 +126,9 @@ a[role='button'] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 60px;
-	height: 3.75rem;
+	height: 70px;
+	height: 4.375rem;
+	padding: 24px;
 	padding: var(--spacing-unit);
 	border-radius: 30px;
 	border-radius: 1.875rem;
@@ -136,4 +137,130 @@ a[role='button'] {
 	font-size: var(--base-font-size);
 	font-weight: var(--base-font-weight);
 	line-height: 1;
+}
+a[role='button']::after {
+	content: none;
+}
+
+/*
+====================
+		Skip to content
+====================
+*/
+
+body > a:first-child {
+	display: none;
+}
+
+/*
+====================
+		Menu btns
+====================
+*/
+
+a#close-menu,
+a#open-menu {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 70px;
+	width: 4.375rem;
+	margin: var(--spacing-unit);
+	border-radius: 50%;
+}
+
+a#close-menu > svg,
+a#open-menu > svg {
+	display: block;
+	width: 100%;
+	fill: var(--color-white);
+}
+
+a#open-menu {
+	z-index: 2;
+	display: block;
+	background-color: var(--color-white);
+}
+a#open-menu > svg {
+	fill: var(--color-primary);
+}
+
+/*
+====================
+		Menu
+====================
+*/
+
+nav[role='menu'] {
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 100%;
+	height: 100vh;
+	padding: calc(4.375rem + (2 * var(--spacing-unit))) var(--spacing-unit);
+	background-color: var(--color-primary);
+}
+
+nav[role='menu'] > ul {
+	display: block;
+	width: 100%;
+}
+
+nav[role='menu'] li {
+	position: relative;
+	display: block;
+	margin: var(--spacing-unit) 0;
+}
+nav[role='menu'] li:last-child {
+	margin: 0;
+}
+
+nav[role='menu'] li > ul {
+	position: relative;
+	display: block;
+	opacity: 0;
+	overflow: hidden;
+	max-height: 0;
+	margin-left: calc(2 * var(--spacing-unit));
+	transition: all .3s ease-in-out;
+}
+nav[role='menu'] li:focus-within > a + ul,
+nav[role='menu'] li:hover > a + ul {
+	opacity: 1;
+	overflow: visible;
+	max-height: 50rem;
+}
+
+nav[role='menu'] li > a {
+	position: relative;
+	display: block;
+	padding-left: var(--spacing-unit);
+	color: var(--color-white);
+	font-size: var(--heading-font-size);
+	font-weight: var(--heading-font-weight);
+	line-height: 1;
+}
+nav[role='menu'] li > a::before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: block;
+	opacity: 0;
+	width: 5px;
+	height: 100%;
+	background-color: var(--color-black);
+	transform: translateX(-50vw);
+	transition: all .3s ease-in-out;
+	content: '';
+}
+nav[role='menu'] li > a:focus::before,
+nav[role='menu'] li > a:hover::before,
+nav[role='menu'] li > a:active::before {
+	opacity: 1;
+	transform: translateX(0);
+}
+nav[role='menu'] li > a::after {
+	content: none;
 }
