@@ -20,7 +20,7 @@
 
 	/* Colors */
 	--color-primary: #62bf94;
-	--color-warning: #c83741;
+	--color-secondary: #468b6b;
 	--color-black: #031727;
 	--color-grey: #f2f2f2;
 	--color-white: #ffffff;
@@ -76,12 +76,12 @@ body {
 }
 
 h1 {
+	overflow-wrap: break-word;
 	font-size: var(--title-font-size);
 	font-weight: var(--title-font-weight);
 	letter-spacing: var(--title-letter-spacing);
 	line-height: var(--title-line-height);
 	text-transform: uppercase;
-	overflow-wrap: break-word;
 	word-wrap: break-word;
 	hyphens: auto;
 }
@@ -130,12 +130,12 @@ a[role='button'] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 70px;
+	height: 50px;
 	height: 3.125rem;
-	padding: 24px;
+	padding: 16px;
 	padding: 1rem;
 	border: 0;
-	border-radius: 30px;
+	border-radius: 70px;
 	border-radius: 4.375rem;
 	outline: 0;
 	color: var(--color-white);
@@ -149,6 +149,7 @@ a[role='button'] {
 @media all and (min-width: 41em) {
 	button,
 	a[role='button'] {
+		height: 70px;
 		height: 4.375rem;
 		padding: var(--spacing-unit);
 	}
@@ -179,29 +180,43 @@ div {
 }
 
 div > h1 {
+	width: 95%;
 	width: calc(100% - (2 * var(--spacing-unit)));
-	max-width: 30rem;
+	max-width: 30em;
 	margin: var(--spacing-unit) auto;
 }
 
 form {
 	display: grid;
-	grid-template-columns: 1.5rem auto;
+	grid-template-columns: var(--spacing-unit) auto;
+	width: 95%;
 	width: calc(100% - (var(--spacing-unit) * 2));
-	max-width: 30rem;
+	max-width: 30em;
 	margin: var(--spacing-unit) auto;
 }
 
 form input {
 	grid-column: span 2;
-	height: 4.375rem;
+	height: 50px;
+	height: 3.125rem;
+	padding: 17px;
 	padding: calc((3.125rem - 1em) / 2);
+	border: .3125rem solid transparent;
 	border: 5px solid transparent;
 	outline: 0;
+	margin: 16px 0;
 	margin: 1rem 0;
-	background-color: #fff;
+	background-color: var(--color-white);
 	font-size: 1em;
 	font-weight: 300;
+}
+@media all and (min-width: 41em) {
+	form input {
+		height: 70px;
+		height: 4.375rem;
+		padding: 27px;
+		padding: calc((4.375rem - 1em) / 2);
+	}
 }
 form input:not([type='checkbox']):focus {
 	border-color: var(--color-primary);
@@ -211,8 +226,8 @@ form input:not([type='checkbox']):focus {
 /* Custom checkbox: */
 form input[type='checkbox'] {
 	grid-column: span 1;
-	width: 1.5rem;
-	height: 1.5rem;
+	width: var(--spacing-unit);
+	height: var(--spacing-unit);
 	padding: 0;
 	border: 0;
 	margin: 0;
@@ -220,35 +235,39 @@ form input[type='checkbox'] {
 }
 
 form input[type='checkbox']::before {
-	content: '';
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 16px;
 	width: 1rem;
+	height: 16px;
 	height: 1rem;
+	padding: 4px;
 	padding: .25rem;
-	background: #ccc;
+	background-color: #ccc;
+	content: '';
 	transition: all .3s ease-in-out;
 }
 form input[type='checkbox']:focus::before {
 	border-radius: 50%;
 }
-
-input[type="checkbox"]:checked::before {
+form input[type="checkbox"]:checked::before {
 	border-radius: 50%;
+	color: var(--color-white);
+	background-color: var(--color-primary);
 	content: '\2713';
-	color: #fff;
-	background: var(--color-primary);
 }
 
 form input[type='checkbox'] + label {
 	grid-column: 2/3;
+	margin-left: 16px;
 	margin-left: 1rem;
 }
 
 form > a {
 	grid-column: span 2;
 	justify-self: start;
+	margin: 16px 0;
 	margin: 1rem 0;
 }
 
@@ -263,20 +282,33 @@ form button[type='submit'] {
 */
 
 body > a:first-child {
-	z-index: 3;
 	position: fixed;
+	z-index: 3;
 	right: var(--spacing-unit);
+	top: 74px;
 	top: calc(3.125rem + var(--spacing-unit));
 	display: block;
 	opacity: 0;
 	width: auto;
+	height: 50px;
 	height: 3.125rem;
+	padding: 17px;
 	padding: calc((3.125rem - 1em) / 2);
-	color: #fff;
+	color: var(--color-white);
 	background-color: var(--primary-color);
 	line-height: 1;
 	text-decoration: none;
 	pointer-events: none;
+}
+@media all and (min-width: 41em) {
+	body > a:first-child {
+		top: 94px;
+		top: calc(4.375rem + var(--spacing-unit));
+		height: 70px;
+		height: 4.375rem;
+		padding: 27px;
+		padding: calc((4.375rem - 1em) / 2);
+	}
 }
 body > a:first-child:focus-within {
 	opacity: 1;
@@ -296,15 +328,16 @@ a#open-menu {
 	left: 0;
 	top: 0;
 	display: block;
-	width: 70px;
+	width: 50px;
 	width: 3.125rem;
-	margin: calc(1 * var(--spacing-unit));
+	margin: var(--spacing-unit);
 	border-radius: 50%;
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 @media all and (min-width: 41em) {
 	a#close-menu,
 	a#open-menu {
+		width: 70px;
 		width: 4.375rem;
 	}
 }
@@ -314,14 +347,14 @@ a#close-menu:active,
 a#open-menu:focus,
 a#open-menu:hover,
 a#open-menu:active {
-	background-color: #000;
+	background-color: var(--color-black);
 }
 
 a#close-menu > svg,
 a#open-menu > svg {
 	display: block;
 	width: 100%;
-	fill: #000;
+	fill: var(--color-black);
 }
 a#close-menu:focus > svg,
 a#close-menu:hover > svg,
@@ -335,10 +368,7 @@ a#open-menu:active > svg {
 a#open-menu {
 	display: none;
 }
-
-a#open-menu:target {
-	display: block;
-}
+a#open-menu:target,
 a#open-menu:target + nav {
 	display: block;
 }
@@ -357,6 +387,7 @@ nav[role='menu'] {
 	display: none;
 	width: 100%;
 	height: 100vh;
+	padding: 118px 24px;
 	padding: calc(4.375rem + (2 * var(--spacing-unit))) var(--spacing-unit);
 	background-color: var(--color-primary);
 }
@@ -364,7 +395,7 @@ nav[role='menu'] {
 nav[role='menu'] > ul {
 	display: block;
 	width: 100%;
-	max-width: 30rem;
+	max-width: 30em;
 }
 
 nav[role='menu'] li {
@@ -382,6 +413,7 @@ nav[role='menu'] li > ul {
 	opacity: 0;
 	overflow: hidden;
 	max-height: 0;
+	margin-left: 48px;
 	margin-left: calc(2 * var(--spacing-unit));
 	transition: all .3s ease-in-out;
 }
@@ -389,7 +421,7 @@ nav[role='menu'] li:focus-within > a + ul,
 nav[role='menu'] li:hover > a + ul {
 	opacity: 1;
 	overflow: visible;
-	max-height: 50rem;
+	max-height: 50em;
 }
 
 nav[role='menu'] li > a {
@@ -413,15 +445,17 @@ nav[role='menu'] li > a::before {
 	display: block;
 	opacity: 0;
 	width: 5px;
+	width: .3125rem;
 	height: 100%;
 	background-color: var(--color-black);
+	content: '';
 	transform: translateX(-50vw);
 	transition: all .3s ease-in-out;
-	content: '';
 }
 @media all and (min-width: 41em) {
 	nav[role='menu'] li > a::before {
 		width: 9px;
+		width: .5625rem;
 	}
 }
 nav[role='menu'] li > a:focus::before,
@@ -446,10 +480,11 @@ header[role='banner'] {
 	justify-content: center;
 	width: 100%;
 	height: 75vh;
+	padding: 48px;
 	padding: calc(2 * var(--spacing-unit));
 	color: var(--color-white);
 	background: var(--color-primary);
-	background: linear-gradient(-45deg, var(--color-primary), #468B6B);
+	background: linear-gradient(-45deg, var(--color-primary), var(--color-secondary));
 	background-size: 400% 400%;
 	text-align: center;
 	-webkit-animation: Gradient 10s ease infinite;
@@ -468,7 +503,6 @@ header[role='banner'] {
 		background-position: 0% 50%;
 	}
 }
-
 @-moz-keyframes Gradient {
 	0% {
 		background-position: 0% 50%;
@@ -480,7 +514,6 @@ header[role='banner'] {
 		background-position: 0% 50%;
 	}
 }
-
 @keyframes Gradient {
 	0% {
 		background-position: 0% 50%;
@@ -503,18 +536,9 @@ main {
 	display: block;
 	width: 100%;
 	padding: var(--spacing-unit);
-	-webkit-column-count: 1;
+	-webkit-columns: 280px 3;
+	-webkit-columns: 17.5rem 3;
   -webkit-column-gap: var(--spacing-unit);
-}
-@media all and (min-width: 40em) {
-	main {
-		-webkit-column-count: 2;
-	}
-}
-@media all and (min-width: 60em) {
-	main {
-		-webkit-column-count: 3;
-	}
 }
 
 /*
@@ -548,7 +572,7 @@ main > a[role='button'] article {
 	display: block;
 	width: 100%;
 	height: auto;
-	background-color: #fff;
+	background-color: var(--color-white);
 	transition: all .3s ease-in-out;
 }
 
@@ -565,7 +589,7 @@ main > a[role='button'] article > h2 {
 	display: block;
 	opacity: 1;
 	padding: var(--spacing-unit);
-	color: #fff;
+	color: var(--color-white);
 	background-color: rgba(3,23,39,.8);
 	font-size: 1.25em;
 	transform: translateX(0);
@@ -591,36 +615,41 @@ main > a[role='button']:active article > h2 {
 	right: 0;
 	top: 0;
 	display: none;
-	max-width: 35rem;
+	max-width: 35em;
 	margin: var(--spacing-unit) auto;
-	background-color: #fff;
+	background-color: var(--color-white);
 	box-shadow: 0 0 0 100vmax rgba(0,0,0,.8);
 }
 
 #item-detail > [role='button'] {
-	z-index: 3;
 	position: absolute;
-	top: 0;
+	z-index: 3;
 	right: 0;
+	top: 0;
 	display: block;
+	width: 50px;
 	width: 3.125rem;
+	height: 50px;
 	height: 3.125rem;
 	border: 0;
 	border-radius: 50%;
 	margin: var(--spacing-unit);
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 @media all and (min-width: 41em) {
 	#item-detail > [role='button'] {
+		width: 70px;
 		width: 4.375rem;
+		height: 70px;
 		height: 4.375rem;
 	}
 }
 #item-detail > [role='button']:focus,
 #item-detail > [role='button']:hover,
 #item-detail > [role='button']:active {
-	background-color: #000;
+	background-color: var(--color-black);
 }
+
 #item-detail > [role='button']:focus > svg,
 #item-detail > [role='button']:hover > svg,
 #item-detail > [role='button']:active > svg {
@@ -629,8 +658,8 @@ main > a[role='button']:active article > h2 {
 
 #item-detail figure {
 	display: block;
-	width: 100%;
 	overflow: hidden;
+	width: 100%;
 	max-width: min-content;
 	margin: auto;
 }
@@ -646,7 +675,7 @@ main > a[role='button']:active article > h2 {
 
 #item-detail img {
 	display: block;
-	max-width: 35rem;
+	max-width: 35em;
 	height: auto;
 }
 
@@ -673,24 +702,27 @@ html:target > #item-detail {
 
 #item-detail fieldset {
 	position: absolute;
-	right: 0;
-	bottom: calc(-9rem - var(--spacing-unit));
 	left: 0;
+	right: 0;
+	bottom: -168px;
+	bottom: calc(-9rem - var(--spacing-unit));
 	display: block;
 	width: 100%;
-	max-width: 20rem;
+	max-width: 20em;
 	height: auto;
 	padding: 0;
 	border: 0;
 	margin: 0 auto;
-	color: #fff;
+	color: var(--color-white);
 	text-align: center;
 }
-@media all and (min-width: 45rem) {
+@media all and (min-width: 45em) {
 	#item-detail fieldset {
+		left: 102.5%;
+		left: calc(100% + var(--spacing-unit));
 		top: 0;
 		bottom: 0;
-		left: calc(100% + 1.5rem);
+		width: 80px;
 		width: 5rem;
 		margin: 0;
 	}
@@ -710,12 +742,14 @@ html:target > #item-detail {
 #item-detail fieldset > input + label {
 	position: relative;
 	float: left;
-	width: calc(25% - 1.5rem);
-	max-width: 3.5rem;
+	width: 22.5%;
+	width: calc(25% - var(--spacing-unit));
+	max-width: 3.5em;
 	padding-top: 15%;
+	margin: 12px;
 	margin: .75rem;
-	cursor: pointer;
 	font-size: .75em;
+	cursor: pointer;
 	transform: scale(1,1);
 	transition: transform .3s ease-in-out;
 }
@@ -723,11 +757,13 @@ html:target > #item-detail {
 #item-detail fieldset > input:hover + label {
 	transform: scale(1.5,1.5);
 }
-@media all and (min-width: 45rem) {
+@media all and (min-width: 45em) {
 	#item-detail fieldset > input + label {
 		clear: both;
 		display: block;
+		width: 56px;
 		width: 3.5rem;
+		padding-top: 48px;
 		padding-top: 3rem;
 	}
 }
@@ -735,8 +771,8 @@ html:target > #item-detail {
 #item-detail fieldset > input + label > svg {
 	position: absolute;
 	left: 0;
-	top: 0;
 	right: 0;
+	top: 0;
 	display: block;
 	width: 75%;
 	height: auto;
@@ -766,24 +802,29 @@ html:target > #item-detail {
 nav[role='status'] {
 	display: block;
 	width: 100%;
+	padding: 12px;
 	padding: calc(var(--spacing-unit) / 2);
 	background-color: var(--color-primary);
 }
-@media all and (min-width: 45rem) {
+@media all and (min-width: 45em) {
 	nav[role='status'] {
 		top: 0;
 	}
 }
 
 nav[role='status'] h1 {
+	margin: 12px;
 	margin: calc(var(--spacing-unit) / 2);
 }
 
 nav[role='status'] progress[value] {
 	position: relative;
 	display: block;
+	width: 97.5%;
 	width: calc(100% - var(--spacing-unit));
+	height: 25px;
 	height: 1.5625rem;
+	margin: 24px 12px;
 	margin: var(--spacing-unit) calc(var(--spacing-unit) / 2);
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -791,8 +832,9 @@ nav[role='status'] progress[value] {
 	appearance: none;
 }
 nav[role='status'] progress[value]::before {
-	z-index: 1;
 	position: absolute;
+	z-index: 1;
+	left: 16px;
 	left: 1rem;
 	top: 0;
 	display: block;
@@ -803,12 +845,14 @@ nav[role='status'] progress[value]::before {
 }
 
 nav[role='status'] progress[value]::-webkit-progress-bar {
+	border-radius: 50px;
 	border-radius: 3.125rem;
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 
 nav[role='status'] progress[value]::-webkit-progress-value {
 	position: relative;
+	border-radius: 50px 0 0 50px;
 	border-radius: 3.125rem 0 0 3.125rem;
 	background-color: var(--color-black);
 }
@@ -816,14 +860,14 @@ nav[role='status'] progress[value]::-webkit-progress-value {
 nav[role='status'] ol {
 	display: flex;
 	justify-content: space-between;
-	padding-bottom: 1.5rem;
+	padding-bottom: var(--spacing-unit);
 }
 
 /* Give h1, progress and ol a max-width: */
 nav[role='status'] h1,
 nav[role='status'] progress[value],
 nav[role='status'] ol {
-	max-width: 35rem;
+	max-width: 35em;
 }
 
 nav[role='status'] li {
@@ -831,13 +875,17 @@ nav[role='status'] li {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+	width: 40px;
 	width: 2.5rem;
+	height: 40px;
 	height: 2.5rem;
+	padding: 12px;
 	padding: calc((2.5rem - 1em) / 2);
 	border-radius: 50%;
 	outline: 0;
+	margin: 12px;
 	margin: calc(var(--spacing-unit) / 2);
-	background-color: #fff;
+	background-color: var(--color-white);
 	font-size: .75em;
 	font-weight: 500;
 	line-height: 1;
@@ -852,6 +900,7 @@ nav[role='status'] li:focus {
 nav[role='status'] li::before {
 	margin-bottom: 150%;
 	content: counter(ol-item);
+	font-size: 16px;
 	font-size: 1rem;
 }
 
@@ -877,14 +926,15 @@ nav[role='status'] li:nth-child(1) {
 section {
 	position: relative;
 	left: 0;
+	top: 50px;
 	top: 3.125rem;
 	display: block;
 	width: 100%;
-	max-width: 40rem;
+	max-width: 40em;
 	margin: 0 auto;
 	margin-top: var(--spacing-unit);
 }
-@media all and (min-width: 45rem) {
+@media all and (min-width: 45em) {
 	section {
 		top: 0;
 	}
@@ -911,16 +961,18 @@ section li:nth-child(odd) {
 section li > p {
 	padding: var(--spacing-unit);
 	border-radius: 70px;
-	background-color: #fff;
+	border-radius: 4.375rem;
+	background-color: var(--color-white);
 	text-align: center;
 }
 
 section li:nth-child(odd) > p {
-	color: #fff;
+	color: var(--color-white);
 	background-color: var(--color-primary);
 }
 
 section li > footer {
+	margin-top: 8px;
 	margin-top: .5rem;
 	font-size: .75em;
 }
@@ -936,19 +988,21 @@ section form {
 section form label {
 	display: block;
 	font-size: 1.5em;
-	color: #fff;
+	color: var(--color-white);
 }
 
 section form textarea {
 	display: block;
 	width: 100%;
+	height: 70.4px;
 	height: calc((2 * var(--spacing-unit)) + 1.4em);
 	padding: var(--spacing-unit);
 	border: 5px solid transparent;
+	border: .3125rem solid transparent;
 	outline: 0;
 	margin: var(--spacing-unit) auto;
 	resize: none;
-	background-color: #fff;
+	background-color: var(--color-white);
 	font-size: 1em;
 	font-weight: 300;
 	line-height: 1;
@@ -965,15 +1019,16 @@ section form textarea::placeholder {
 section form button {
 	display: block;
 	width: 100%;
+	height: 50px;
 	height: 3.125rem;
 	padding: 0;
 	border: 0;
 	margin: 0;
-	cursor: pointer;
-	color: #fff;
+	color: var(--color-white);
+	background-color: var(--color-black);
 	font-size: 1em;
 	font-weight: 300;
-	background-color: var(--color-black);
+	cursor: pointer;
 }
 section form button:focus,
 section form button:hover {
